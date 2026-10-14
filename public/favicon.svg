@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#56D9FF" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+    <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC" />
+      <stop offset="100%" stop-color="#A78BFA" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#07111F"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" stroke="rgba(86, 217, 255, 0.2)" stroke-width="1.5"/>
+  <!-- Cube lattice wireframe isometric -->
+  <path d="M32 14 L50 24 L50 44 L32 54 L14 44 L14 24 Z" stroke="rgba(148, 163, 184, 0.4)" stroke-width="1.5" fill="none"/>
+  <path d="M32 14 L32 34 L50 24 M32 34 L14 24 M32 34 L32 54" stroke="rgba(148, 163, 184, 0.4)" stroke-width="1.5"/>
+  <!-- Center Atom (Ti) -->
+  <circle cx="32" cy="34" r="5" fill="url(#violetGrad)"/>
+  <circle cx="32" cy="34" r="7" stroke="#A78BFA" stroke-opacity="0.6" stroke-width="1"/>
+  <!-- Corner Atoms (Ba) -->
+  <circle cx="32" cy="14" r="3" fill="url(#cyanGrad)"/>
+  <circle cx="50" cy="24" r="3" fill="url(#cyanGrad)"/>
+  <circle cx="50" cy="44" r="3" fill="url(#cyanGrad)"/>
+  <circle cx="32" cy="54" r="3" fill="url(#cyanGrad)"/>
+  <circle cx="14" cy="44" r="3" fill="url(#cyanGrad)"/>
+  <circle cx="14" cy="24" r="3" fill="url(#cyanGrad)"/>
+</svg>

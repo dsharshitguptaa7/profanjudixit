@@ -1,0 +1,344 @@
+/* Interactive Crystal Visualizer Styles: "The Beauty of Condensed Matter" */
+.crystal-section {
+  background: linear-gradient(180deg, var(--bg-obsidian) 0%, rgba(7, 17, 31, 0.95) 50%, var(--bg-obsidian) 100%);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+}
+
+.crystal-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 2.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.55), 0 0 36px var(--cyan-glow-subtle);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+}
+
+/* 3D Viewport Area - Explicit height ensures canvas container never collapses */
+.crystal-viewport {
+  position: relative;
+  height: 600px;
+  min-height: 560px;
+  width: 100%;
+  background: radial-gradient(circle at 50% 45%, rgba(14, 26, 43, 0.7) 0%, rgba(5, 8, 13, 0.98) 90%);
+  cursor: grab;
+  overflow: hidden;
+}
+
+.crystal-viewport:active {
+  cursor: grabbing;
+}
+
+.crystal-canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.crystal-canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* 2D Polarization & Dipole Schematic in Side Panel */
+.schematic-wrapper {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.schematic-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.schematic-canvas {
+  width: 100%;
+  height: 145px;
+  background: rgba(5, 8, 13, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  display: block;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Top HUD Overlay Controls */
+.crystal-hud-top {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.crystal-hud-top > * {
+  pointer-events: auto;
+}
+
+/* Mode Switcher Pill */
+.mode-toggle-group {
+  display: flex;
+  align-items: center;
+  background: rgba(5, 8, 13, 0.88);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  padding: 0.3rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+.mode-btn {
+  padding: 0.5rem 1.15rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+}
+
+.mode-btn:hover {
+  color: var(--text-primary);
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, var(--cyan-primary) 0%, #2563EB 100%);
+  color: #05080D;
+  box-shadow: 0 2px 16px rgba(86, 217, 255, 0.5);
+}
+
+/* Viewport Action Buttons (Reset, Auto-rotate) */
+.hud-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hud-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  background: rgba(5, 8, 13, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(12px);
+}
+
+.hud-btn:hover {
+  border-color: var(--cyan-primary);
+  color: var(--cyan-primary);
+  background: rgba(86, 217, 255, 0.1);
+  box-shadow: 0 0 12px var(--cyan-glow);
+}
+
+/* Bottom HUD: Atom Legend & Hint */
+.crystal-hud-bottom {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.atom-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  background: rgba(5, 8, 13, 0.88);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1.15rem;
+  backdrop-filter: blur(16px);
+  pointer-events: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.legend-dot.ba { background: #56D9FF; box-shadow: 0 0 8px #56D9FF; }
+.legend-dot.ti { background: #C084FC; box-shadow: 0 0 8px #C084FC; }
+.legend-dot.o  { background: #FB7185; box-shadow: 0 0 8px #FB7185; }
+
+.interaction-hint {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  background: rgba(5, 8, 13, 0.8);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(12px);
+}
+
+/* Side Information & Physics Telemetry Panel */
+.crystal-side-panel {
+  padding: 2.25rem 2.25rem 2.25rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.crystal-info-card {
+  background: rgba(7, 17, 31, 0.75);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.65rem;
+  margin-bottom: 1.5rem;
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: var(--transition-smooth);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.crystal-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.info-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  color: var(--cyan-primary);
+  letter-spacing: 0.05em;
+}
+
+.symmetry-tag, .valence-badge {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid var(--border-violet);
+  color: var(--violet-primary);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.info-title {
+  font-size: 1.45rem;
+  font-family: var(--font-serif);
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+}
+
+.info-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.35rem;
+}
+
+.crystal-parameters {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.param-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.param-row span {
+  color: var(--text-muted);
+}
+
+.param-row strong {
+  font-family: var(--font-mono);
+  color: var(--cyan-primary);
+  font-weight: 500;
+}
+
+/* Physics Theory & Polarization Explainer Box */
+.physics-explainer-card {
+  background: rgba(7, 17, 31, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.35rem;
+}
+
+.explainer-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.explainer-title svg {
+  color: var(--cyan-primary);
+}
+
+.explainer-text {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.85rem;
+}
+
+.scientific-disclaimer {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border-left: 2px solid var(--cyan-primary);
+  padding-left: 0.65rem;
+  line-height: 1.45;
+}
